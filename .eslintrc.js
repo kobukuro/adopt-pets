@@ -1,5 +1,5 @@
 module.exports = {
-  root: true,
+  root: true,//npm remove @vue/cli-plugin-eslint
   env: {
     node: true
   },

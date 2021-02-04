@@ -24,4 +24,6 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### install bootstrap-vue
+```
 npm i bootstrap-vue
+```
