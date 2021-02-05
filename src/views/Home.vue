@@ -4,7 +4,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <h1>Adopt a new best friend.</h1>
     <button v-on:click="togglePetForm" class="btn btn-primary">Add New Pet</button>
-    <b-form v-on:click.prevent="" v-if="showPetForm">
+    <b-form v-on:click.prevent="handleSubmit" v-if="showPetForm">
       <b-form-group
         id="input-group-1"
         label="Pet's Name:"
@@ -48,7 +48,7 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-
+import { mapActions } from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -66,9 +66,23 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'addPet'
+    ]),
     // toggle為切換的意思
     togglePetForm: function(){
       this.showPetForm = !this.showPetForm
+    },
+    handleSubmit: function(){
+      const { species, age, name } = this.formData
+      const payload = {
+        species,
+        pet: {
+          name,
+          age
+        }
+      }
+      this.addPet(payload)
     }
   }
 }
