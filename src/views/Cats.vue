@@ -1,6 +1,14 @@
 <template>
     <div>
-        <b-table striped hover :items="cats"></b-table>
+        <h1>Cats for Adoption</h1>
+        <b-table striped hover :items="cats">
+            <!-- cell參數為欄位名稱 -->
+            <template #cell(name)="data">
+                <router-link :to="`/pets/${data.index}`">
+                    {{ data.value }}
+                </router-link>
+            </template>
+        </b-table>
     </div>
 </template>
 <script>
