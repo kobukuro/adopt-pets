@@ -4,7 +4,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <h1>Adopt a new best friend.</h1>
     <button v-on:click="togglePetForm" class="btn btn-primary">Add New Pet</button>
-    <b-form v-on:click.prevent="handleSubmit" v-if="showPetForm">
+    <b-form v-on:submit.prevent="handleSubmit" v-if="showPetForm">
       <b-form-group
         id="input-group-1"
         label="Pet's Name:"
