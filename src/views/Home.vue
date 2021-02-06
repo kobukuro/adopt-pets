@@ -3,6 +3,7 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <h1>Adopt a new best friend.</h1>
+    {{ animalsCount }}
     <button v-on:click="togglePetForm" class="btn btn-primary">Add New Pet</button>
     <b-form v-on:submit.prevent="handleSubmit" v-if="showPetForm">
       <b-form-group
@@ -48,7 +49,7 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -64,6 +65,11 @@ export default {
       },
       
     }
+  },
+  computed: {
+    ...mapGetters([
+      'animalsCount'
+    ])
   },
   methods: {
     ...mapActions([
@@ -83,6 +89,13 @@ export default {
         }
       }
       this.addPet(payload)
+
+      // reset form after submit
+      this.formData = {
+        name:'',
+        species: null,
+        age: 0
+      }
     }
   }
 }
