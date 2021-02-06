@@ -3,6 +3,7 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <h1>Adopt a new best friend.</h1>
+    {{ getAllCats.length }}
     {{ animalsCount }}
     <button v-on:click="togglePetForm" class="btn btn-primary">Add New Pet</button>
     <b-form v-on:submit.prevent="handleSubmit" v-if="showPetForm">
@@ -68,7 +69,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'animalsCount'
+      'animalsCount',
+      'getAllCats'
     ])
   },
   methods: {
